@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js CRUD Example</title>
+  <!-- Include Vue.js and Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body class="bg-gray-100 p-4">
+
+<div id="app" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+  <h1 class="text-2xl font-bold mb-4"> CRUD Example</h1>
+
+  <!-- Form to add a new item -->
+  <form @submit.prevent="addItem" class="mb-4">
+    <label for="newItem" class="block text-sm font-medium text-gray-600">New Item:</label>
+    <input type="text" id="newItem" v-model="newItem" required
+           class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-300">
+    <button type="submit"
+            class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+      Add Item
+    </button>
+  </form>
+
+  <!-- Display the list of items -->
+  <ul>
+    <li v-for="(item, index) in items" :key="index"
+        class="flex justify-between items-center bg-gray-200 p-2 mb-2 rounded-md">
+      {{ item }}
+      <div>
+        <button @click="editItem(index)"
+                class="mx-2 px-2 py-1 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring focus:border-yellow-300">
+          Edit
+        </button>
+        <button @click="deleteItem(index)"
+                class="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300">
+          Delete
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
